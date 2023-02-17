@@ -14,7 +14,8 @@
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.30.2",
-    "@graphprotocol/graph-ts": "^0.27.0"
+    "@graphprotocol/graph-ts": "^0.27.0",
+    "hardhat": "^2.12.7"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
