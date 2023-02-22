@@ -5,11 +5,11 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: Gravity
+    name: ERC1155
     network: mainnet
     source:
-      abi: Gravity
-      startBlock: 1082561
+      abi: ERC1155
+      startBlock: 1084530
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -17,11 +17,9 @@ dataSources:
       entities:
         - Gravatar
       abis:
-        - name: Gravity
-          file: ./abis/Gravity.json
+        - name: ERC1155
+          file: ./abis/ERC1155.abi
       eventHandlers:
-        - event: NewGravatar(uint256,address,string,string)
+        - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
           handler: handleNewGravatar
-        - event: UpdatedGravatar(uint256,address,string,string)
-          handler: handleUpdatedGravatar
       file: ./src/mapping.ts
