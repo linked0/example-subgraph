@@ -1,6 +1,6 @@
 import { TransferSingle } from '../generated/ERC1155/ERC1155'
 import { Transfer } from '../generated/ERC721/ERC721'
-import { NftOwner, Nft } from '../generated/schema'
+import { NftOwner, NftItem } from '../generated/schema'
 import { BigInt } from '@graphprotocol/graph-ts';
 
 export function handleNewTransfer(event: TransferSingle): void {
@@ -15,10 +15,10 @@ export function handleNewTransfer(event: TransferSingle): void {
   
 
   let nftId = event.params._to.toHex() + '-' + event.params._id.toHex()
-  let nft = Nft.load(nftId)
+  let nft = NftItem.load(nftId)
   let nftAmount = BigInt.fromI32(0)
   if (nft == null) {
-    nft = new Nft(nftId)
+    nft = new NftItem(nftId)
   }
   else {
     nftAmount = nft.amount
@@ -40,10 +40,10 @@ export function handleNewTransfer721(event: Transfer): void {
   }
   
   let nftId = event.params._tokenId.toHex()
-  let nft = Nft.load(nftId)
+  let nft = NftItem.load(nftId)
   let nftAmount = BigInt.fromI32(0)
   if (nft == null) {
-    nft = new Nft(nftId)
+    nft = new NftItem(nftId)
   }
   else {
     nftAmount = nft.amount
